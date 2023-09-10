@@ -4,9 +4,13 @@ import { ActivityCard } from "./ActivityCard";
 
 const initData: FetchActivityDTO[] = [];
 
-export function ActivityCardsContent() {
+interface Props {
+  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | string>>;
+}
+export function ActivityCardsContent(props: Props) {
+  const { setAddExpenseDialog } = props;
   const [ activityCardsData, setActivityCardsData ] = useState(initData);
-  
+
   useEffect(() => {
     fetchActivities(setActivityCardsData);
   }, [])
@@ -14,7 +18,7 @@ export function ActivityCardsContent() {
   if (activityCardsData.length !== 0) {
     return (
       activityCardsData.map(function(activity, key) {
-        return <ActivityCard activity={activity} key={key} />;
+        return <ActivityCard activity={activity} key={key} setAddExpenseDialog={setAddExpenseDialog} />;
       })
     );
   }

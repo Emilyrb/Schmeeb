@@ -5,13 +5,14 @@ import { FetchActivityDTO } from '../api/fetchActivities';
 
 interface Props {
   activity: FetchActivityDTO;
+  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | string>>;
 }
 
 export const ActivityCard = (props: Props) => {
-  const { activity } = props;
+  const { activity, setAddExpenseDialog } = props;
 
   return (
-    <Col className="col-3">
+    <Col className="col-4">
       <Card>
         <Card.Body>
           <Card.Title>{activity.data.title}</Card.Title>
@@ -21,6 +22,7 @@ export const ActivityCard = (props: Props) => {
               return <span key={key}>{member} </span>;
             })}
           </Card.Text>
+          <Button variant="primary" onClick={() => {setAddExpenseDialog(activity.id)}}>Add expense</Button>
           <Button variant="danger">Delete</Button>
         </Card.Body>
       </Card>

@@ -1,16 +1,30 @@
-import { collection, getDocs } from '@firebase/firestore';
+import { collection, query, getDocs, QueryDocumentSnapshot, DocumentData } from '@firebase/firestore';
 import { firestore } from '../firebase_setup/firebase';
 
-interface Activity {
+export interface FetchActivityDTO {
   id: string;
+  data: ActivityDTO;
+}
+
+interface ActivityDTO {
   title: string;
   description?: string;
   members: string[];
 }
 
-export async function fetchActivities() {
-
-  const activitiesSnapshot = await getDocs(collection(firestore, 'Activity'));
-  console.log(activitiesSnapshot.docs[0].id);
-  return activitiesSnapshot;
+function setActivityData(doc: QueryDocumentSnapshot<DocumentData, DocumentData>){
+  return ({
+    id: doc.id,
+    data: {
+      title: doc.data().title,
+      members: doc.data().members,
+    }
+  });
 }
+
+export async function fetchActivities(setActivityCardsData: React.Dispatch<React.SetStateAction<FetchActivityDTO[]>>) {
+  const activitiesQuery = query(collection(firestore, "Activity"));
+  const activitiesSnapshot = await getDocs(activitiesQuery);
+  const activities = activitiesSnapshot.docs.map((doc) => setActivityData(doc));
+  setActivityCardsData(activities);
+};

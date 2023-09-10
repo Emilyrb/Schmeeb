@@ -1,8 +1,5 @@
-import { Navbar, Container }  from 'react-bootstrap';
-import { ActivityCard } from './Components/ActivityCard';
-import { fetchActivities } from './api/fetchActivities';
-
-await fetchActivities();
+import { Navbar, Container, Row }  from 'react-bootstrap';
+import { ActivityCardsContent } from './Components/ActivityCardsContent';
 
 function App() {
   return (
@@ -18,7 +15,9 @@ function App() {
           <Navbar.Brand href="#">SCHMEEEEB</Navbar.Brand>
         </Container>
       </Navbar>
-      <Container><ActivityCard /></Container>
+      <Container>
+        <Row><ActivityCardsContent /></Row>
+      </Container>
     </div>
   );
 }

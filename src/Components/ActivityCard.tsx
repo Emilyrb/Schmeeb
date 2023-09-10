@@ -1,16 +1,19 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 
 export const ActivityCard = () => {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>Activity Title</Card.Title>
-        <Card.Text>
-          members
-        </Card.Text>
-        <Button variant="primary">Edit</Button>
-      </Card.Body>
-    </Card>
+    <Col className="col-3">
+      <Card>
+        <Card.Body>
+          <Card.Title>title</Card.Title>
+          <Card.Text>
+            members
+          </Card.Text>
+          <Button variant="danger">Delete</Button>
+        </Card.Body>
+      </Card>
+  </Col>
   );
 }

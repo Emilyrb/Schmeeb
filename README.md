@@ -1,5 +1,6 @@
 # Schmeeb
 Group reimbursement calculator
+[https://schmeeb-iou.web.app/](https://schmeeb-iou.web.app/)
 ![image](https://github.com/Emilyrb/Schmeeb/assets/22574582/ac58302b-664a-4cd1-8d71-7b9ae4108769)
 
 ## Publishing

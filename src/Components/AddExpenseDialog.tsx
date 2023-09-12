@@ -1,16 +1,16 @@
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Dropdown, DropdownButton, Form, InputGroup, Modal } from "react-bootstrap";
 import styled from "styled-components";
+import { FetchActivityDTO } from "../api/fetchActivities";
 
 interface Props {
-  addExpenseDialog: string;
-  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | string>>;
+  addExpenseDialog: FetchActivityDTO;
+  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
 }
 
 export function AddExpenseDialog(props: Props) {
-  const [ memberList, setMemberList ] = useState(['']); 
   const { addExpenseDialog, setAddExpenseDialog } = props;
   const handleClose = () => setAddExpenseDialog(null);
 
@@ -19,7 +19,7 @@ export function AddExpenseDialog(props: Props) {
       <Modal.Header closeButton>
         <Modal.Title>Add expense</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{renderForm({memberList, setMemberList})} {addExpenseDialog}</Modal.Body>
+      <Modal.Body>{renderForm({memberList: addExpenseDialog.data.members})} {JSON.stringify(addExpenseDialog)}</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close
@@ -33,8 +33,7 @@ export function AddExpenseDialog(props: Props) {
 }
 
 interface memberDataProps {
-  memberList: string[];
-  setMemberList: React.Dispatch<React.SetStateAction<string[]>>;
+  memberList: FetchActivityDTO['data']['members'];
 }
 
 const MemberInput = styled.div`
@@ -43,33 +42,44 @@ const MemberInput = styled.div`
 `;
 
 function renderForm(props: memberDataProps) {
-  const { memberList, setMemberList } = props;
-
+  const { memberList } = props;
+  console.log(memberList);
   return (
     <Form>
       <Form.Group className="mb-3" controlId="form.name">
-        <Form.Label>Activity Name</Form.Label>
-        <Form.Control type="text" placeholder="Movie night" />
+        <Form.Label>Expense Item</Form.Label>
+        <Form.Control type="text" placeholder="Dinner" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="form.description">
-        <Form.Label>Description</Form.Label>
-        <Form.Control as="textarea" rows={3} />
+      <Form.Group className="mb-3" controlId="form.price">
+        <Form.Label>Price</Form.Label>
+        <InputGroup className="mb-3">
+          <DropdownButton
+            variant="outline-secondary"
+            title="AUD"
+            id="input-group-dropdown-1"
+            align="end"
+            disabled
+          >
+            <Dropdown.Item href="#">Action</Dropdown.Item>
+          </DropdownButton>
+          <Form.Control aria-label="Text input with dropdown button" />
+      </InputGroup>
       </Form.Group>
-      <Form.Label>Members: <span><FontAwesomeIcon icon={faPlus} onClick={() => {setMemberList(memberList => [...memberList, ''] )}} size={'2x'} /></span></Form.Label>
+      <Form.Label>Split</Form.Label>
       {Array.from(Array(memberList.length), (e, i) => {
-        return <AddedMemmber {...props} />
+        return <MemberShareInput name={memberList[i]} />
       })}
     </Form>
   );
 }
 
-function AddedMemmber(props: memberDataProps) {
-  const { memberList, setMemberList } = props;
+function MemberShareInput(props: {name: string}) {
+  const { name } = props;
 
   return (
-    <Form.Group className="mb-3" controlId="form.member">
-      <MemberInput><Form.Control type="text" placeholder="Carmy" /></MemberInput>
-      <span><FontAwesomeIcon icon={faMinus} onClick={() => {}} size={'2x'} /></span>
-    </Form.Group>
+    <InputGroup className="mb-3">
+    <Form.Control aria-label={name} placeholder={name} value={name} disabled />
+    <Form.Control value="100%" />
+  </InputGroup>
   );
 }

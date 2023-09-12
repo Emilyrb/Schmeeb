@@ -5,7 +5,7 @@ import { ActivityCard } from "./ActivityCard";
 const initData: FetchActivityDTO[] = [];
 
 interface Props {
-  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | string>>;
+  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
 }
 export function ActivityCardsContent(props: Props) {
   const { setAddExpenseDialog } = props;

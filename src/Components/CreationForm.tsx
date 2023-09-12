@@ -47,7 +47,8 @@ function CreationForm(props: creationFormProps){
                         size={'2x'} style={{ cursor: 'pointer' }} />
                 </span></Form.Label>
                 {memberList.map((member, index) => (
-                    <li key={index}>{member}</li>
+
+                    // <li key={index}>{member}</li>
                 )
                 )}
         </Form>

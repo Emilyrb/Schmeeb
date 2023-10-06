@@ -48,7 +48,7 @@ function CreationForm(props: creationFormProps){
                 </span></Form.Label>
                 {memberList.map((member, index) => (
 
-                    // <li key={index}>{member}</li>
+                    <li key={index}>{member}</li>
                 )
                 )}
         </Form>

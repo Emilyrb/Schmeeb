@@ -66,6 +66,18 @@ function renderForm(props: memberDataProps) {
           <Form.Control aria-label="Text input with dropdown button" />
       </InputGroup>
       </Form.Group>
+      
+      <Form.Group className="mb-3" controlId="form.paidBy">
+        <Form.Label>Paid by</Form.Label>
+        <InputGroup className="mb-3">
+          <Form.Select aria-label="Default select example">
+            <option>Choose an option</option>
+            {Array.from(Array(memberList.length), (e, i) => {
+              return <option value={i}>{memberList[i]}</option>
+            })}
+          </Form.Select>
+      </InputGroup>
+      </Form.Group>
       <Form.Label>Split</Form.Label>
       {Array.from(Array(memberList.length), (e, i) => {
         return <MemberShareInput name={memberList[i]} />

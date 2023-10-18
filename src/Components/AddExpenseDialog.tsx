@@ -1,7 +1,7 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Button, Dropdown, DropdownButton, Form, InputGroup, Modal } from "react-bootstrap";
+import { Button, Dropdown, DropdownButton, Form, InputGroup, Modal} from "react-bootstrap";
 import styled from "styled-components";
 import { FetchActivityDTO } from "../api/fetchActivities";
 import EvenSplit from "../math/EvenSplit";

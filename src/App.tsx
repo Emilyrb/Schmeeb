@@ -42,7 +42,7 @@ function App() {
       </Navbar>
       <Container>
         <Row><ActivityCardsContent setAddExpenseDialog={setAddExpenseDialog} /></Row>
-        <StyledFontAwesomeIcon icon={faCirclePlus} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
+        <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
       </Container>
       {addExpenseDialog && <AddExpenseDialog addExpenseDialog={addExpenseDialog} setAddExpenseDialog={setAddExpenseDialog}/>}
       {showAddActivityDialog && <AddActivityDialog showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}

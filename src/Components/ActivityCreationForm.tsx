@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 import { Form, InputGroup, ToggleButton, ToggleButtonGroup, Stack } from 'react-bootstrap';
-interface creationFormProps {
-    
-}
 
 interface handleMembers {
     memberList: string[];
@@ -18,8 +15,13 @@ function handleAddMember(props: handleMembers){
         setNewMember('');};
 }
 
+function handleRemoveMember(memberList: string[], setMemberList: React.Dispatch<React.SetStateAction<string[]>>, index: number){
+    const updatedList = [...memberList];
+    updatedList.splice(index, 1);
+    setMemberList(updatedList);
+}
 
-function ActivityCreationForm(props: creationFormProps){
+function ActivityCreationForm(){
     const [memberList, setMemberList] = useState<string[]>([''])
     const [newMember, setNewMember] = useState<string>('');
     return (
@@ -41,7 +43,18 @@ function ActivityCreationForm(props: creationFormProps){
                 </Form.Group>
             <ul style={{ listStyleType: 'none', margin: 0, padding: 0}}>
                 {memberList.map((member, index) => (
-                   <li key={index}>{member}</li>
+                   <li key={index} style={{display: 'flex', justifyContent: 'space-between'}}>
+                        {member}
+                        {memberList.length > 0 && (
+                            <button 
+                                className="btn btn-danger" 
+                                type="button" 
+                                onClick={() => handleRemoveMember(memberList, setMemberList, index)}
+                            >
+                                Remove
+                            </button>
+                            )}
+                    </li>
                 ))}
             </ul>
             {/* <Stack direction="horizontal" gap={3}>

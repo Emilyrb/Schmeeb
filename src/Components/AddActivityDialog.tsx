@@ -15,7 +15,7 @@ export function AddActivityDialog(props: Props) {
   return (
     <Modal show={showAddActivityDialog} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Create expense</Modal.Title>
+        <Modal.Title>Create Activity</Modal.Title>
       </Modal.Header>
       <Modal.Body><ExpenseCreationForm/></Modal.Body>
       <Modal.Footer>

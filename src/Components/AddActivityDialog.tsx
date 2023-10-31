@@ -1,5 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
-import ExpenseCreationForm from "./ExpenseCreationForm";
+import ExpenseCreationForm from "./ActivityCreationForm";
 
 interface Props {
   showAddActivityDialog: boolean;

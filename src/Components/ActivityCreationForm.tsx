@@ -27,7 +27,7 @@ function ExpenseCreationForm(props: creationFormProps){
     return (
         <Form>
             <Form.Group className="mb-3" controlId="form.name">
-                <Form.Label>Expense</Form.Label>
+                <Form.Label>Activity</Form.Label>
                 <Form.Control type="text" placeholder="Activity Name..." />
             </Form.Group>
             <Form.Group className="mb-3" controlId="form.description">

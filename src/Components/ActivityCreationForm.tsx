@@ -13,12 +13,15 @@ function handleAddMember(props: handleMembers){
     if (newMember.trim() !== '') {
         setMemberList([...memberList, newMember]);
         setNewMember('');};
+        // console.log(memberList)
+        console.log(newMember)
 }
 
 function handleRemoveMember(memberList: string[], setMemberList: React.Dispatch<React.SetStateAction<string[]>>, index: number){
     const updatedList = [...memberList];
     updatedList.splice(index, 1);
     setMemberList(updatedList);
+    console.log(updatedList)
 }
 
 function ActivityCreationForm(){
@@ -45,7 +48,7 @@ function ActivityCreationForm(){
                 {memberList.map((member, index) => (
                    <li key={index} style={{display: 'flex', justifyContent: 'space-between'}}>
                         {member}
-                        {memberList.length > 0 && (
+                        {member && (
                             <button 
                                 className="btn btn-danger" 
                                 type="button" 

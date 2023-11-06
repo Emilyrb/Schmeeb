@@ -1,5 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
-import ExpenseCreationForm from "./ActivityCreationForm";
+import ActivityCreationForm from "./ActivityCreationForm";
 
 interface Props {
   showAddActivityDialog: boolean;
@@ -17,7 +17,7 @@ export function AddActivityDialog(props: Props) {
       <Modal.Header closeButton>
         <Modal.Title>Create Activity</Modal.Title>
       </Modal.Header>
-      <Modal.Body><ExpenseCreationForm/></Modal.Body>
+      <Modal.Body><ActivityCreationForm/></Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close

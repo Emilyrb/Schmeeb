@@ -15,7 +15,6 @@ interface ExpenseDTO {
 }
 
 function setExpenseData(doc: QueryDocumentSnapshot<DocumentData, DocumentData>){
-  console.log('setExpenseData', doc);
   return ({
     id: doc.id,
     data: {
@@ -32,6 +31,5 @@ export async function fetchExpenses(setExpensesList: React.Dispatch<React.SetSta
   const expensesQuery = query(collection(firestore, "Activity", activityId, "Expense"));
   const expensesSnapshot = await getDocs(expensesQuery);
   const expenses = expensesSnapshot.docs.map((doc) => setExpenseData(doc));
-  console.log('expenses', expenses);
   setExpensesList(expenses);
 };

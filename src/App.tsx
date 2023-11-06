@@ -7,6 +7,7 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { FetchActivityDTO } from './api/fetchActivities';
 import { ActivityCreationForm} from './Components/ActivityCreationForm';
+import { EditActivityDialog } from './Components/EditActivityDialog';
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   float: right;
@@ -24,8 +25,9 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 function App() {
-  const [ addShowExpenseDialog, setShowAddExpenseDialog ] = useState<null | FetchActivityDTO>(null);
+  const [ showAddExpenseDialog, setShowAddExpenseDialog ] = useState<null | FetchActivityDTO>(null);
   const [ showAddActivityDialog, setShowAddActivityDialog ] = useState(false);
+  const [ showEditActivityDialog, setShowEditActivityDialog ] = useState<null | string>(null);
   
   return (
     <div className="App">
@@ -41,11 +43,12 @@ function App() {
         </Container>
       </Navbar>
       <Container>
-        <Row><ActivityCardsContent setShowAddExpenseDialog={setShowAddExpenseDialog} /></Row>
+        <Row><ActivityCardsContent setShowAddExpenseDialog={setShowAddExpenseDialog} setShowEditActivityDialog={setShowEditActivityDialog} /></Row>
         <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
       </Container>
-      {addShowExpenseDialog && <AddExpenseDialog addExpenseDialog={addShowExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog}/>}
+      {showAddExpenseDialog && <AddExpenseDialog addExpenseDialog={showAddExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog}/>}
       {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
+      {showEditActivityDialog && <EditActivityDialog showEditActivityDialog={showEditActivityDialog} setShowEditActivityDialog={setShowEditActivityDialog} />}
     </div>
   );
 }

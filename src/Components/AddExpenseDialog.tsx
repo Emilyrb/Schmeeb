@@ -8,12 +8,12 @@ import EvenSplit from "../math/EvenSplit";
 
 interface Props {
   addExpenseDialog: FetchActivityDTO;
-  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
+  setShowAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
 }
 
 export function AddExpenseDialog(props: Props) {
-  const { addExpenseDialog, setAddExpenseDialog } = props;
-  const handleClose = () => setAddExpenseDialog(null);
+  const { addExpenseDialog, setShowAddExpenseDialog } = props;
+  const handleClose = () => setShowAddExpenseDialog(null);
 
   return (
     <Modal show={addExpenseDialog !== null} onHide={handleClose}>

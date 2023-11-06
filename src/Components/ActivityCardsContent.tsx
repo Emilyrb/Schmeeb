@@ -5,10 +5,10 @@ import { ActivityCard } from "./ActivityCard";
 const initData: FetchActivityDTO[] = [];
 
 interface Props {
-  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
+  setShowAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
 }
 export function ActivityCardsContent(props: Props) {
-  const { setAddExpenseDialog } = props;
+  const { setShowAddExpenseDialog } = props;
   const [ activityCardsData, setActivityCardsData ] = useState(initData);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function ActivityCardsContent(props: Props) {
   if (activityCardsData.length !== 0) {
     return (
       activityCardsData.map(function(activity, key) {
-        return <ActivityCard activity={activity} key={key} setAddExpenseDialog={setAddExpenseDialog} />;
+        return <ActivityCard activity={activity} key={key} setShowAddExpenseDialog={setShowAddExpenseDialog} />;
       })
     );
   }

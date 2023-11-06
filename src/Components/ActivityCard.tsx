@@ -7,13 +7,13 @@ import { useEffect, useState } from 'react';
 
 interface Props {
   activity: FetchActivityDTO;
-  setAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
+  setShowAddExpenseDialog: React.Dispatch<React.SetStateAction<null | FetchActivityDTO>>;
 }
 
 const initExpensesData: FetchExpenseDTO[] = [];
 
 export const ActivityCard = (props: Props) => {
-  const { activity, setAddExpenseDialog } = props;
+  const { activity, setShowAddExpenseDialog } = props;
   const [ expensesData, setExpensesData ] = useState(initExpensesData);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const ActivityCard = (props: Props) => {
               return <>{expense.data.itemName} {expense.data.price} {expense.data.paidBy}</>;
             })
           }
-          <Button variant="primary" onClick={() => {setAddExpenseDialog(activity)}}>Add expense</Button>
+          <Button variant="primary" onClick={() => {setShowAddExpenseDialog(activity)}}>Add expense</Button>
           <Button variant="danger">Delete</Button>
         </Card.Body>
       </Card>

@@ -24,7 +24,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 function App() {
-  const [ addExpenseDialog, setAddExpenseDialog ] = useState<null | FetchActivityDTO>(null);
+  const [ addShowExpenseDialog, setShowAddExpenseDialog ] = useState<null | FetchActivityDTO>(null);
   const [ showAddActivityDialog, setShowAddActivityDialog ] = useState(false);
   
   return (
@@ -41,10 +41,10 @@ function App() {
         </Container>
       </Navbar>
       <Container>
-        <Row><ActivityCardsContent setAddExpenseDialog={setAddExpenseDialog} /></Row>
+        <Row><ActivityCardsContent setShowAddExpenseDialog={setShowAddExpenseDialog} /></Row>
         <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
       </Container>
-      {addExpenseDialog && <AddExpenseDialog addExpenseDialog={addExpenseDialog} setAddExpenseDialog={setAddExpenseDialog}/>}
+      {addShowExpenseDialog && <AddExpenseDialog addExpenseDialog={addShowExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog}/>}
       {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
     </div>
   );

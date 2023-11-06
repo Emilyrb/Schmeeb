@@ -14,12 +14,12 @@ const initExpensesData: FetchExpenseDTO[] = [];
 
 export const ActivityCard = (props: Props) => {
   const { activity, setShowAddExpenseDialog } = props;
-  const [ expensesData, setExpensesData ] = useState(initExpensesData);
+  const [expensesData, setExpensesData] = useState(initExpensesData);
 
   useEffect(() => {
     fetchExpenses(setExpensesData, activity.id);
   }, [])
-  
+
   return (
     <Col className="col-4">
       <Card>
@@ -28,20 +28,20 @@ export const ActivityCard = (props: Props) => {
           <Card.Subtitle>{activity.data.description}</Card.Subtitle>
           <Card.Text>
             members:
-            {activity.data.members?.map(function(member, key){
+            {activity.data.members?.map(function (member, key) {
               return <span key={key}>{member} </span>;
             })}
           </Card.Text>
           {
             expensesData.length > 0 &&
-            expensesData.map(function(expense, key) {
+            expensesData.map(function (expense, key) {
               return <>{expense.data.itemName} {expense.data.price} {expense.data.paidBy}</>;
             })
           }
-          <Button variant="primary" onClick={() => {setShowAddExpenseDialog(activity)}}>Add expense</Button>
+          <Button variant="primary" onClick={() => { setShowAddExpenseDialog(activity) }}>Add expense</Button>
           <Button variant="danger">Delete</Button>
         </Card.Body>
       </Card>
-  </Col>
+    </Col>
   );
 }

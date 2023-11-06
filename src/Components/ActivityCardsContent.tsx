@@ -9,7 +9,7 @@ interface Props {
 }
 export function ActivityCardsContent(props: Props) {
   const { setShowAddExpenseDialog } = props;
-  const [ activityCardsData, setActivityCardsData ] = useState(initData);
+  const [activityCardsData, setActivityCardsData] = useState(initData);
 
   useEffect(() => {
     fetchActivities(setActivityCardsData);
@@ -17,7 +17,7 @@ export function ActivityCardsContent(props: Props) {
 
   if (activityCardsData.length !== 0) {
     return (
-      activityCardsData.map(function(activity, key) {
+      activityCardsData.map(function (activity, key) {
         return <ActivityCard activity={activity} key={key} setShowAddExpenseDialog={setShowAddExpenseDialog} />;
       })
     );

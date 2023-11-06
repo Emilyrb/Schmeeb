@@ -1,4 +1,4 @@
-import { Navbar, Container, Row }  from 'react-bootstrap';
+import { Navbar, Container, Row } from 'react-bootstrap';
 import { ActivityCardsContent } from './Components/ActivityCardsContent';
 import { useState } from 'react';
 import { AddExpenseDialog } from './Components/AddExpenseDialog';
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { FetchActivityDTO } from './api/fetchActivities';
-import { ActivityCreationForm} from './Components/ActivityCreationForm';
+import { ActivityCreationForm } from './Components/ActivityCreationForm';
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   float: right;
@@ -24,9 +24,9 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 function App() {
-  const [ addShowExpenseDialog, setShowAddExpenseDialog ] = useState<null | FetchActivityDTO>(null);
-  const [ showAddActivityDialog, setShowAddActivityDialog ] = useState(false);
-  
+  const [addShowExpenseDialog, setShowAddExpenseDialog] = useState<null | FetchActivityDTO>(null);
+  const [showAddActivityDialog, setShowAddActivityDialog] = useState(false);
+
   return (
     <div className="App">
       <link
@@ -42,10 +42,10 @@ function App() {
       </Navbar>
       <Container>
         <Row><ActivityCardsContent setShowAddExpenseDialog={setShowAddExpenseDialog} /></Row>
-        <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
+        <StyledFontAwesomeIcon icon={faCirclePlus} style={{ color: "#4ca6ff" }} onClick={() => { setShowAddActivityDialog(true) }} size={'4x'} />
       </Container>
-      {addShowExpenseDialog && <AddExpenseDialog addExpenseDialog={addShowExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog}/>}
-      {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
+      {addShowExpenseDialog && <AddExpenseDialog addExpenseDialog={addShowExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog} />}
+      {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog} addExpenseDialog={''} />}
     </div>
   );
 }

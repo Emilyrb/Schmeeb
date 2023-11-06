@@ -70,7 +70,7 @@ function renderForm(props: handleMembers) {
   );
 }
 
-export function ActivityCreationForm(props: Props) {
+export function AddActivityDialog(props: Props) {
   const [memberList, setMemberList] = useState<string[]>([''])
   const [newMember, setNewMember] = useState<string>('');
   const [formData, setFormData] = useState(initActivityData);

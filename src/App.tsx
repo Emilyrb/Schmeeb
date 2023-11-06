@@ -1,4 +1,4 @@
-import { Navbar, Container, Row }  from 'react-bootstrap';
+import { Navbar, Container, Row } from 'react-bootstrap';
 import { ActivityCardsContent } from './Components/ActivityCardsContent';
 import { useState } from 'react';
 import { AddExpenseDialog } from './Components/AddExpenseDialog';
@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { FetchActivityDTO } from './api/fetchActivities';
-import { ActivityCreationForm} from './Components/ActivityCreationForm';
 import { EditActivityDialog } from './Components/EditActivityDialog';
+import { AddActivityDialog } from './Components/AddActivityDialog';
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   float: right;
@@ -47,7 +47,7 @@ function App() {
         <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
       </Container>
       {showAddExpenseDialog && <AddExpenseDialog addExpenseDialog={showAddExpenseDialog} setShowAddExpenseDialog={setShowAddExpenseDialog}/>}
-      {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
+      {showAddActivityDialog && <AddActivityDialog showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog} addExpenseDialog={''}/>}
       {showEditActivityDialog && <EditActivityDialog showEditActivityDialog={showEditActivityDialog} setShowEditActivityDialog={setShowEditActivityDialog} />}
     </div>
   );

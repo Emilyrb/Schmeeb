@@ -23,7 +23,7 @@ export const ActivityCard = (props: Props) => {
           <Card.Subtitle>{activity.data.description}</Card.Subtitle>
           <Card.Text>
             members:
-            {activity.data.members?.map(function(member, key){
+            {activity.data.members?.map(function (member, key) {
               return <span key={key}>{member} </span>;
             })}
           </Card.Text>
@@ -32,6 +32,6 @@ export const ActivityCard = (props: Props) => {
           <Button variant="danger">Delete</Button>
         </Card.Body>
       </Card>
-  </Col>
+    </Col>
   );
 }

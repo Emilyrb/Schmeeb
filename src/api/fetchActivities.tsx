@@ -6,7 +6,7 @@ export interface FetchActivityDTO {
   data: ActivityDTO;
 }
 
-interface ActivityDTO {
+export interface ActivityDTO {
   title: string;
   description?: string;
   members: string[];

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, InputGroup, ToggleButton, ToggleButtonGroup, Stack } from 'react-bootstrap';
+import { Form, Modal, Button, InputGroup, ToggleButton, ToggleButtonGroup, Stack } from 'react-bootstrap';
 
 interface handleMembers {
     memberList: string[];
@@ -8,27 +8,37 @@ interface handleMembers {
     setNewMember: React.Dispatch<React.SetStateAction<string>>;
 }
 
+interface Props {
+    showAddActivityDialog: boolean;
+    setShowAddActivityDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+
 function handleAddMember(props: handleMembers){
     const {memberList, newMember, setMemberList, setNewMember} = props
     if (newMember.trim() !== '') {
         setMemberList([...memberList, newMember]);
         setNewMember('');};
-        // console.log(memberList)
-        console.log(newMember)
 }
 
 function handleRemoveMember(memberList: string[], setMemberList: React.Dispatch<React.SetStateAction<string[]>>, index: number){
     const updatedList = [...memberList];
     updatedList.splice(index, 1);
     setMemberList(updatedList);
-    console.log(updatedList)
 }
 
-function ActivityCreationForm(){
+export function ActivityCreationForm(props: Props){
     const [memberList, setMemberList] = useState<string[]>([''])
     const [newMember, setNewMember] = useState<string>('');
+    const { showAddActivityDialog, setShowAddActivityDialog } = props;
+    const handleClose = () => setShowAddActivityDialog(false);
+    const handleSubmit = () => {alert('handle submit')};
+
     return (
-        <Form>
+        <Modal show={showAddActivityDialog} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Create Activity</Modal.Title>
+      </Modal.Header>
+      <Modal.Body><Form>
             <Form.Group className="mb-3" controlId="form.name">
                 <Form.Label>Activity</Form.Label>
                 <Form.Control type="text" placeholder="Activity Name..." />
@@ -71,8 +81,16 @@ function ActivityCreationForm(){
                         </ToggleButton>
                     </ToggleButtonGroup>
             </Stack> */}
-        </Form>
+        </Form></Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleSubmit}>
+          Create
+        </Button>
+      </Modal.Footer>
+    </Modal>
+        
     );
 }
-
-export default ActivityCreationForm;

@@ -5,8 +5,8 @@ import { AddExpenseDialog } from './Components/AddExpenseDialog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { AddActivityDialog } from './Components/AddActivityDialog';
 import { FetchActivityDTO } from './api/fetchActivities';
+import { ActivityCreationForm} from './Components/ActivityCreationForm';
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   float: right;
@@ -45,7 +45,7 @@ function App() {
         <StyledFontAwesomeIcon icon={faCirclePlus} style={{color: "#4ca6ff"}} onClick={() => {setShowAddActivityDialog(true)}} size={'4x'}/>
       </Container>
       {addExpenseDialog && <AddExpenseDialog addExpenseDialog={addExpenseDialog} setAddExpenseDialog={setAddExpenseDialog}/>}
-      {showAddActivityDialog && <AddActivityDialog showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
+      {showAddActivityDialog && <ActivityCreationForm showAddActivityDialog={showAddActivityDialog} setShowAddActivityDialog={setShowAddActivityDialog}/>}
     </div>
   );
 }

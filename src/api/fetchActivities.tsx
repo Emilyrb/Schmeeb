@@ -10,7 +10,6 @@ interface ActivityDTO {
   title: string;
   description?: string;
   members: string[];
-  cost: number;
 }
 
 function setActivityData(doc: QueryDocumentSnapshot<DocumentData, DocumentData>){
@@ -19,7 +18,6 @@ function setActivityData(doc: QueryDocumentSnapshot<DocumentData, DocumentData>)
     data: {
       title: doc.data().title,
       members: doc.data().members,
-      cost: doc.data().cost,
       description: doc.data().description
     }
   });

@@ -16,7 +16,6 @@ export const ActivityCard = (props: Props) => {
       <Card>
         <Card.Body>
           <Card.Title>{activity.data.title}</Card.Title>
-          ${activity.data.cost}
           <Card.Text>
             members:
             {activity.data.members?.map(function(member, key){

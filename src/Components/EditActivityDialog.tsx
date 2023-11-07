@@ -2,6 +2,7 @@ import { Button, Dropdown, DropdownButton, Form, InputGroup, Modal} from "react-
 import { FetchExpenseDTO, fetchExpenses } from "../api/fetchExpenses";
 import { useEffect, useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
+import { ExpenseForm } from "./ExpenseForm";
 // import styled from "styled-components";
 
 interface Props {
@@ -59,7 +60,7 @@ function renderExpenseItem(expensesData: FetchExpenseDTO[]) {
             <span>{expense.data.price}</span>
           </Accordion.Header>
           <Accordion.Body>
-            
+            <ExpenseForm expense={expense} />
             {expense.data.paidBy} {JSON.stringify(expense.data.split)}
           </Accordion.Body>
         </Accordion.Item>

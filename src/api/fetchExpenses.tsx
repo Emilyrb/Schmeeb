@@ -6,19 +6,17 @@ export interface FetchExpenseDTO {
   data: ExpenseDTO;
 }
 
-interface ExpenseDTO {
-  activityId: string,
+export interface ExpenseDTO {
   itemName: string,
   price: number,
   paidBy: string,
-  split: Map<string, number>,
+  split: { [key: string]: number },
 }
 
 function setExpenseData(doc: QueryDocumentSnapshot<DocumentData, DocumentData>){
   return ({
     id: doc.id,
     data: {
-      activityId: doc.data().activityId,
       itemName: doc.data().itemName,
       price: doc.data().price,
       paidBy: doc.data().paidBy,

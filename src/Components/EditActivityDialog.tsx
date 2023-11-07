@@ -10,7 +10,7 @@ interface Props {
   setShowEditActivityDialog: React.Dispatch<React.SetStateAction<null | string>>;
 }
 
-const initExpensesData: FetchExpenseDTO[] = [];
+const initExpensesList: FetchExpenseDTO[] = [];
 
 // const PriceText = styled.div`
 //   text-align: right;
@@ -20,12 +20,12 @@ const initExpensesData: FetchExpenseDTO[] = [];
 
 export function EditActivityDialog(props: Props) {
   const { showEditActivityDialog, setShowEditActivityDialog } = props;
-  const [ expensesData, setExpensesData ] = useState(initExpensesData);
+  const [ expensesList, setExpensesList ] = useState(initExpensesList);
   const handleClose = () => setShowEditActivityDialog(null);
 
   useEffect(() => {
     if (showEditActivityDialog !== null) {
-      fetchExpenses(setExpensesData, showEditActivityDialog);
+      fetchExpenses(setExpensesList, showEditActivityDialog);
     }
   }, [])
   
@@ -34,7 +34,7 @@ export function EditActivityDialog(props: Props) {
       <Modal.Header closeButton>
         <Modal.Title>View expenses</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{renderExpenseItem(expensesData)}</Modal.Body>
+      <Modal.Body>{renderExpenseItem(expensesList)}</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close
@@ -47,12 +47,12 @@ export function EditActivityDialog(props: Props) {
   );
 }
 
-function renderExpenseItem(expensesData: FetchExpenseDTO[]) {
+function renderExpenseItem(expensesList: FetchExpenseDTO[]) {
   return (
     <Accordion>
       {
-    expensesData.length > 0 &&
-    expensesData.map(function(expense, key) {
+    expensesList.length > 0 &&
+    expensesList.map(function(expense, key) {
       return (
         <Accordion.Item eventKey={key.toString()}>
           <Accordion.Header>
